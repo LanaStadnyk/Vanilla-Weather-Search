@@ -16,27 +16,35 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-search-box">
-        <div class="row">
-          <div class="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt="Sun icon"
-            />16°C|°F
+      <div class="weather-wrapper">
+        <div class="weather-search-box">
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex weather-forecast">
+               <img
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                alt="Sun icon"
+              /><strong>16</strong><span class="units">°C | <a href="#">°F</a></span>
 
-            <ul class="weather-details">
-              <li>Precipitation: 2%</li>
-              <li>Humidity: 76%</li>
-              <li>Wind: 10 km/h</li>
-            </ul>
-          </div>
+              <ul class="weather-details">
+                <li>Precipitation: 2%</li>
+                <li>Humidity: 76%</li>
+                <li>Wind: 10 km/h</li>
+              </ul>               
+              </div>
 
-          <div class="col-6">
-            <h1>03189 Orihuela, Alicante</h1>
-            <ul class="weather-now">
-              <li>Sunday 18:00</li>
-              <li>Clear</li>
-            </ul>
+            </div>
+
+            <div class="col-6">
+              <div class="location-date">
+              <h1>03189 Orihuela, Alicante</h1>
+              <ul class="weather-now">
+                <li>Sunday 18:00</li>
+                <li>Clear</li>
+              </ul>               
+              </div>
+
+            </div>
           </div>
         </div>
         <small>
@@ -49,7 +57,6 @@
         >
       </div>
     </div>
-
     <script src="src/app.js"></script>
   </body>
 </html>
