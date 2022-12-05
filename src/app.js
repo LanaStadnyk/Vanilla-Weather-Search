@@ -14,7 +14,6 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.temperature.current
   );
@@ -27,6 +26,8 @@ function displayTemperature(response) {
     response.data.condition.description;
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#date").innerHTML = formatDate(response.data.time * 1000);
+  document.querySelector("#weather-icon").setAttribute("src", `${response.data.condition.icon_url}`);
+  document.querySelector("#weather-icon").setAttribute("alt", `${response.data.condition.description}`);
 }
 
 let apiKey = "124ftfab6b55c54beo58d91354585001";
