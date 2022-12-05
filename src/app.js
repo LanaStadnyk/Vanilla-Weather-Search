@@ -30,8 +30,18 @@ function displayTemperature(response) {
   document.querySelector("#weather-icon").setAttribute("alt", `${response.data.condition.description}`);
 }
 
+function search(city) {
 let apiKey = "124ftfab6b55c54beo58d91354585001";
-let city = "Odesa";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
 axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-input");
+  search(cityInput.value);
+}
+
+document.querySelector("#search-form").addEventListener("click", handleSubmit)
+
+search("Odesa");
