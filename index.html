@@ -18,12 +18,30 @@
     <div class="container">
       <div class="weather-wrapper">
         <div class="weather-search-box">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Type a city"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-primary w-100"
+                />
+              </div>
+            </div>
+          </form>
           <div class="row">
             <div class="col-6">
               <div class="d-flex weather-forecast">
-                <img id="weather-icon"
-                  src="" alt=""
-                /><strong id="temperature"></strong
+                <img id="weather-icon" src="" alt="" /><strong
+                  id="temperature"
+                ></strong
                 ><span class="units">°C | <a href="#">°F</a> </span>
 
                 <ul class="weather-details">
