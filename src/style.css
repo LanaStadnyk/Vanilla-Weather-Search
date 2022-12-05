@@ -61,3 +61,13 @@ h1 {
 .condition {
   text-transform: capitalize;
 }
+
+.active {
+  color: #202124;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+  color: #202124;
+}

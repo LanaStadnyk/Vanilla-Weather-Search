@@ -14,8 +14,9 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.temperature.current
+    celsiusTemperature
   );
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
@@ -42,6 +43,21 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
-document.querySelector("#search-form").addEventListener("click", handleSubmit)
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemperature * 9 / 5 + 32);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemperature);
+}
+
+celsiusTemperature = null; 
+
+document.querySelector("#search-form").addEventListener("submit", handleSubmit);
+
+document.querySelector("#fahrenheit-link").addEventListener("click", displayFahrenheitTemperature);
+document.querySelector("#celsius-link").addEventListener("click", displayCelsiusTemperature);
 
 search("Odesa");
