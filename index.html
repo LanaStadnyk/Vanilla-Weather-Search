@@ -40,7 +40,7 @@
           </form>
           <div class="row">
             <div class="col-6">
-              <div class="d-flex weather-forecast">
+              <div class="d-flex current-weather-forecast">
                 <img id="weather-icon" src="" alt="" /><strong
                   id="temperature"
                 ></strong
@@ -49,7 +49,6 @@
                   <a href="#" id="fahrenheit-link">°F</a>
                 </span>
                 <ul class="weather-details">
-                  <li>Precipitation: 2%</li>
                   <li>Humidity: <span id="humidity"></span> %</li>
                   <li>Wind: <span id="wind-speed"></span> km/h</li>
                 </ul>
@@ -65,7 +64,25 @@
               </div>
             </div>
           </div>
+
+          <div class="weather-forecast">
+            <div class="row">
+              <div class="col-2">
+                <div class="forecast-date">Sun</div>
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/rain.png"
+                  alt=""
+                  width="48"
+                />
+                <div class="forecast-temperatures">
+                  <span class="forecast-temperature-max"> 12° </span>
+                  <span class="forecast-temperature-min"> 4° </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <small>
           <a
             href="https://github.com/LanaStadnyk/Weather-Search"
