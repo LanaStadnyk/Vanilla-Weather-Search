@@ -69,8 +69,31 @@ function displayCelsiusTemperature(event) {
   event.preventDefault();
   document.querySelector("#temperature").innerHTML =
     Math.round(celsiusTemperature);
-    document.querySelector("#celsius-link").classList.add("active");
-    document.querySelector("#fahrenheit-link").classList.remove("active");
+  document.querySelector("#celsius-link").classList.add("active");
+  document.querySelector("#fahrenheit-link").classList.remove("active");
+}
+
+function displayForecast() {
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+<div class="forecast-date">${day}</div>
+<img
+  src="https://ssl.gstatic.com/onebox/weather/64/rain.png"
+  alt=""
+  width="48"
+/>
+<div class="forecast-temperatures">
+  <span class="forecast-temperature-max"> 12° </span>
+  <span class="forecast-temperature-min"> 4° </span>
+</div>
+</div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  document.querySelector("#forecast").innerHTML = forecastHTML;
 }
 
 celsiusTemperature = null;
@@ -85,3 +108,4 @@ document
   .addEventListener("click", displayCelsiusTemperature);
 
 search("Odesa");
+displayForecast();
