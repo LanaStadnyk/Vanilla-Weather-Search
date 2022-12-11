@@ -62,7 +62,7 @@ h1 {
   text-transform: capitalize;
 }
 
-.active {
+/* .active {
   color: #202124;
   cursor: default;
 }
@@ -70,7 +70,7 @@ h1 {
 .active:hover {
   text-decoration: none;
   color: #202124;
-}
+} */
 
 .weather-forecast {
   padding-top: 7px;

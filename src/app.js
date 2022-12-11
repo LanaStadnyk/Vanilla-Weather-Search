@@ -64,31 +64,31 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  document.querySelector("#temperature").innerHTML = Math.round(
-    (celsiusTemperature * 9) / 5 + 32
-  );
-  document.querySelector("#fahrenheit-link").classList.add("active");
-  document.querySelector("#celsius-link").classList.remove("active");
-}
+// function displayFahrenheitTemperature(event) {
+//   event.preventDefault();
+//   document.querySelector("#temperature").innerHTML = Math.round(
+//     (celsiusTemperature * 9) / 5 + 32
+//   );
+//   document.querySelector("#fahrenheit-link").classList.add("active");
+//   document.querySelector("#celsius-link").classList.remove("active");
+// }
 
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  document.querySelector("#temperature").innerHTML =
-    Math.round(celsiusTemperature);
-  document.querySelector("#celsius-link").classList.add("active");
-  document.querySelector("#fahrenheit-link").classList.remove("active");
-}
+// function displayCelsiusTemperature(event) {
+//   event.preventDefault();
+//   document.querySelector("#temperature").innerHTML =
+//     Math.round(celsiusTemperature);
+//   document.querySelector("#celsius-link").classList.add("active");
+//   document.querySelector("#fahrenheit-link").classList.remove("active");
+// }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
 <div class="forecast-date">${formatDay(forecastDay.time)}</div>
 <img
   src="${forecastDay.condition.icon_url}"
@@ -104,6 +104,7 @@ function displayForecast(response) {
   )}° </span>
 </div>
 </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   document.querySelector("#forecast").innerHTML = forecastHTML;
@@ -115,15 +116,15 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-celsiusTemperature = null;
+// celsiusTemperature = null;
 
 document.querySelector("#search-form").addEventListener("submit", handleSubmit);
 
-document
-  .querySelector("#fahrenheit-link")
-  .addEventListener("click", displayFahrenheitTemperature);
-document
-  .querySelector("#celsius-link")
-  .addEventListener("click", displayCelsiusTemperature);
+// document
+//   .querySelector("#fahrenheit-link")
+//   .addEventListener("click", displayFahrenheitTemperature);
+// document
+//   .querySelector("#celsius-link")
+//   .addEventListener("click", displayCelsiusTemperature);
 
 search("Odesa");
