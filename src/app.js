@@ -42,6 +42,7 @@ function displayTemperature(response) {
   document
     .querySelector("#weather-icon")
     .setAttribute("alt", `${response.data.condition.description}`);
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -73,7 +74,8 @@ function displayCelsiusTemperature(event) {
   document.querySelector("#fahrenheit-link").classList.remove("active");
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue"];
   days.forEach(function (day) {
@@ -96,6 +98,12 @@ function displayForecast() {
   document.querySelector("#forecast").innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = `124ftfab6b55c54beo58d91354585001`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 celsiusTemperature = null;
 
 document.querySelector("#search-form").addEventListener("submit", handleSubmit);
@@ -108,4 +116,3 @@ document
   .addEventListener("click", displayCelsiusTemperature);
 
 search("Odesa");
-displayForecast();
