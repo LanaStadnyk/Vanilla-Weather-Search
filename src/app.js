@@ -21,6 +21,13 @@ function formatDate(timestamp) {
   return ` ${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayTemperature(response) {
   celsiusTemperature = response.data.temperature.current;
   document.querySelector("#temperature").innerHTML =
@@ -82,15 +89,19 @@ function displayForecast(response) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2">
-<div class="forecast-date">${forecastDay.time}</div>
+<div class="forecast-date">${formatDay(forecastDay.time)}</div>
 <img
   src="${forecastDay.condition.icon_url}"
   alt="${forecastDay.condition.icon}"
   width="48"
 />
 <div class="forecast-temperatures">
-  <span class="forecast-temperature-max"> ${Math.round(forecastDay.temperature.maximum)}° </span>
-  <span class="forecast-temperature-min"> ${Math.round(forecastDay.temperature.minimum)}° </span>
+  <span class="forecast-temperature-max"> ${Math.round(
+    forecastDay.temperature.maximum
+  )}° </span>
+  <span class="forecast-temperature-min"> ${Math.round(
+    forecastDay.temperature.minimum
+  )}° </span>
 </div>
 </div>`;
   });
