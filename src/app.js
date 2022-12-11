@@ -75,22 +75,22 @@ function displayCelsiusTemperature(event) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2">
-<div class="forecast-date">${day}</div>
+<div class="forecast-date">${forecastDay.time}</div>
 <img
-  src="https://ssl.gstatic.com/onebox/weather/64/rain.png"
-  alt=""
+  src="${forecastDay.condition.icon_url}"
+  alt="${forecastDay.condition.icon}"
   width="48"
 />
 <div class="forecast-temperatures">
-  <span class="forecast-temperature-max"> 12° </span>
-  <span class="forecast-temperature-min"> 4° </span>
+  <span class="forecast-temperature-max"> ${Math.round(forecastDay.temperature.maximum)}° </span>
+  <span class="forecast-temperature-min"> ${Math.round(forecastDay.temperature.minimum)}° </span>
 </div>
 </div>`;
   });
